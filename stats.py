@@ -8,7 +8,13 @@ def get_book_text(filepath):
         file_contents = f.read()
         return file_contents
 
-def get_character_count(filepath):
-    with open(filepath) as f:
-        file_contents = f.read()
-        
+def get_character_count(book_text):
+        characters = {}
+        for c in book_text:
+            lowered = c.lower()
+            if lowered in characters:
+                characters[lowered] += 1
+            else:
+                characters[lowered] = 1
+        return characters
+            
